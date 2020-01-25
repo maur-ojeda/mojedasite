@@ -1,21 +1,34 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import Loadable from "react-loadable";
+import "./App.min.css";
 
-import ViewList from "./components/ViewList";
-import UserForm from "./components/UserForm";
+const Loader = x =>
+  Loadable({
+    loading: () => "cargando ...",
+    loader: x
+  });
+
+const Header = Loader(() => import("./components/Header"));
+const Footer = Loader(() => import("./components/Footer"));
+
+const Home = Loader(() => import("./components/Home"));
+const About = Loader(() => import("./components/About"));
+const Works = Loader(() => import("./components/Works"));
+const Contact = Loader(() => import("./components/Contact"));
+
 class App extends Component {
-  state = {
-    ruta: "lista"
-  };
-
   render() {
-    const { ruta } = this.state;
     return (
       <div className="App">
-        {ruta === "lista" && <ViewList />}
-        {ruta === "formulario" && <UserForm />}
+        <Route path="/" component={Header} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/works" component={Works} />
+        <Route exact path="/contact" component={Contact} />
+        <Route path="/" component={Footer} />
       </div>
     );
   }
 }
-
 export default App;
