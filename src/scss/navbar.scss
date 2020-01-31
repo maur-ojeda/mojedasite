@@ -1,0 +1,12 @@
+.navbar-item{
+    color: #fff;
+    &:hover{
+        background-color: #123456!important;
+        color: #ccc!important;
+    }
+    &:focus{
+        background-color: #123456!important;
+        color: #ccc!important;
+    }
+}
+
