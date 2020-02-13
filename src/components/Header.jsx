@@ -1,115 +1,57 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "../logo.svg";
-import close from "../052-close.svg";
+import close from "../close.svg";
+import ellipsis from "../ellipsis.svg";
 
-
-const styles = {
-  nav: {
-        backgroundColor:"transparent",
-        minHeight:'60px'
-  },
-  logo: {
-    minHeight:'60px'
-},
-
-  header: {
-    fontSize: "calc(10px + 2vmin)",
-    color: "white"
-  },
-  color: {
-    background: "red"
-  },
-  menu: {
-    display: "none"
-  },
-  navbaritem:{
-    color:"white"
-  },
-  menuOverlay:{
-    left:"0",
-    top:"0",
-    position: "absolute",
-    width:"100vw",
-    height: "100vh",
-    backgroundColor: 'rgba(0,0,0,0.4)'
-
-  }
-
-};
-
- const menuOverlay = () => {
+const menuOverlay = () => {
   const menu = document.querySelector(".menuOverlay");
   const enlacesMenu = document.querySelectorAll(".animacion");
-  if (menu.classList.contains('close')){
+  if (menu.classList.contains('close')) {
     menu.classList.remove('close');
     menu.classList.add('open');
-   
     enlacesMenu.forEach(function (enlace, index) {
-     enlace.classList.add('llegada');
-    }); 
-  } else
-    {
-      menu.classList.remove('open');
-      enlacesMenu.forEach(function (enlace, index) {
-        enlace.classList.remove('llegada');
-       }); 
-      menu.classList.add('close');
-    }
+      enlace.classList.add('llegada');
+    });
+  } else {
+    menu.classList.remove('open');
+    enlacesMenu.forEach(function (enlace, index) {
+      enlace.classList.remove('llegada');
+    });
+    menu.classList.add('close');
+  }
 };
 
-
-
-const Header = () => (
-
-  
-    <div>
-
-<div className="menuOverlay close">
-  <div className="container">
-    <div className="section">
-      <div className="columns">
-        <div className="column">
-          <Link className="link-item animacion" onClick={menuOverlay} to="/">Home</Link>
-          <Link className="link-item animacion"  onClick={menuOverlay} to="/about">About</Link>
-          <Link className="link-item animacion"  onClick={menuOverlay} to="/users">Users</Link>
-          <Link className="link-item animacion" onClick={menuOverlay} to="/works">Works</Link>
-          <Link className="link-item animacion" onClick={menuOverlay} to="/contact">Contact</Link>
+export default class Header extends Component {
+  render() {
+    return (
+      <div>
+        <div className="menuOverlay close">  
+              <div className="columns is-mobile">
+                <div className="column is-10">
+                  <Link className="link-item animacion" onClick={menuOverlay} to="/">Home</Link>
+                  <Link className="link-item animacion" onClick={menuOverlay} to="/about">About</Link>
+                  <Link className="link-item animacion" onClick={menuOverlay} to="/users">Users</Link>
+                  <Link className="link-item animacion" onClick={menuOverlay} to="/works">Works</Link>
+                  <Link className="link-item animacion" onClick={menuOverlay} to="/contact">Contact</Link>
+                </div>
+                <div className="column is-2">
+                  <div className="link-item is-pulled-right" onClick={menuOverlay}> <img className="iconClose" src={close} height="24" width="24" alt="" /></div>
+                </div>
+              </div>
         </div>
-        <div className="column">
-        <div className="link-item" onClick={menuOverlay}> <img className="iconClose" src={close} height="24" width="24"/></div>
+
+        <div className="columns is-mobile header">
+          <div className="column is-6">
+            <a href="/">
+              <img src={logo} className="logo" alt="" />
+            </a>
+          </div>
+          <div className="column is-6">
+            <div className="is-pulled-right" onClick={menuOverlay}><img src={ellipsis} alt="" /></div>
+          </div>
         </div>
       </div>
-      </div>
-    </div>
-</div>
-
-
-<nav className="navbar" style={styles.nav} role="navigation" aria-label="main navigation">
-      
-
-
-
-      <div className="navbar-brand">
-            <a className="navbar-item" href="/">
-            <img src={logo} style={styles.logo} />
-            </a>     
-      </div>
-      
-    
-        
-        <div className="navbar-start">
-         <div className="navbar-item" onClick={menuOverlay}>mostar menu</div>
-        </div>
-        </nav> 
-
-
-  
-    
-    
-    
-    
-    </div>
-);
-
-export default Header;
+    );
+  }
+}

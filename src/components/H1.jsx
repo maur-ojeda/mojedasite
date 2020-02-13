@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+const styles = {
+  H1: {
+    fontFamily: '"Montserrat", sans-serif',
+    fontSize: "42px",
+    color: "#FFFFFF"
+  }
+};
 
 export default class H1 extends Component {
   render() {
@@ -6,6 +13,6 @@ export default class H1 extends Component {
 
     const { children } = this.props;
 
-    return <h1 className="app-intro">{children}</h1>;
+    return  <h1 style={styles.H1}> {children}</h1>;
   }
 }

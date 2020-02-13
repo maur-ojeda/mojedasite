@@ -1,19 +1,36 @@
-import React from "react";
-import UsersAPI from "../api";
+import React, { Component } from "react";
+import WorksAPI from "../api-works";
 import { Link } from "react-router-dom";
 
-const mapUser = url =>
-    UsersAPI.all().map(u => (
+
+
+const mapWork = url =>
+    WorksAPI.all().map(u => (
         <li key={u.id}>
             <Link to={`${url}/${u.id}`}>{u.name}</Link>
         </li>
     ));
 
-const AllWorks = ({ match }) => (
-    <div>
-        <h1>Works</h1>
-        <ul>{mapUser(match.url)}</ul>
-    </div>
-);
 
-export default AllWorks;
+export default class AllWorks extends Component {
+
+  
+
+    render() {
+      const { match } = this.props;
+      return (     
+        <div>
+            <h1>UX</h1>
+            <ul>{mapWork(match.url)}</ul>
+            <hr/>
+
+            <h1>develpment</h1>
+            <ul>{mapWork(match.url)}</ul>
+            <hr/>
+
+
+        </div>
+        );
+    }
+  }
+  

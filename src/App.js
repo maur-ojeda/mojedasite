@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Loadable from "react-loadable";
 import './App.css';
-import close from "./052-close.svg";
 const Loader = x =>
   Loadable({
     loading: () => "cargando ...",
@@ -43,23 +42,6 @@ class App extends Component {
 
     <Router>
       <div className="App">
-<div className="menuOverlay close">
-  <div className="container">
-    <div className="section">
-      <div className="columns">
-        <div className="column">
-          <Link className="link-item animacion" onClick={this.menuOverlay} to="/">Home</Link>
-          <Link className="link-item animacion"  onClick={this.menuOverlay} to="about">About</Link>
-          <Link className="link-item animacion" onClick={this.menuOverlay} to="works">Works</Link>
-          <Link className="link-item animacion" onClick={this.menuOverlay} to="contact">Contact</Link>
-        </div>
-        <div className="column">
-        <div className="link-item" onClick={this.menuOverlay}> <img className="iconClose" src={close} height="24" width="24"/></div>
-        </div>
-      </div>
-      </div>
-    </div>
-</div>
 
 <section className="section">
   <div className="container">
